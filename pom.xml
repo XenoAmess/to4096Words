@@ -40,7 +40,9 @@
         <base.java.version>1.8</base.java.version>
         <junit-jupiter.version>5.8.0-M1</junit-jupiter.version>
         <lwjgl.version>3.2.3</lwjgl.version>
+        <annotations.version>20.1.0</annotations.version>
         <!---->
+        <x8l.version>2.3.4</x8l.version>
         <!---->
         <!--maven plugins versions-->
         <maven-site-plugin.version>3.9.1</maven-site-plugin.version>
@@ -124,6 +126,18 @@
             <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>${annotations.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.xenoamess</groupId>
+            <artifactId>x8l</artifactId>
+            <version>${x8l.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
