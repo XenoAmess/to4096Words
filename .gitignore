@@ -54,3 +54,4 @@ replay_pid*
 /logs
 *.MF
 *.versionsBackup
+/ACM.png
