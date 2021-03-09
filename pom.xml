@@ -8,7 +8,8 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
-    <description>a util to make file into 4096 words / make it back</description>
+    <description>a util to make file into 4096 words / make it back
+    </description>
     <url>https://github.com/XenoAmess/to4096Words</url>
     <licenses>
         <license>
@@ -46,7 +47,8 @@
         <!---->
         <!--maven plugins versions-->
         <maven-site-plugin.version>3.9.1</maven-site-plugin.version>
-        <maven-project-info-reports-plugin.version>3.1.1</maven-project-info-reports-plugin.version>
+        <maven-project-info-reports-plugin.version>3.1.1
+        </maven-project-info-reports-plugin.version>
         <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
         <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
@@ -56,6 +58,7 @@
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <download-maven-plugin.version>1.6.1</download-maven-plugin.version>
         <versions-maven-plugin.version>2.7</versions-maven-plugin.version>
+        <cyan_zip.version>0.1.1</cyan_zip.version>
     </properties>
 
     <profiles>
@@ -137,7 +140,11 @@
             <artifactId>x8l</artifactId>
             <version>${x8l.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.xenoamess.cyan_potion</groupId>
+            <artifactId>cyan_zip</artifactId>
+            <version>${cyan_zip.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -221,6 +228,14 @@
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
                     <argLine>-Dfile.encoding=UTF-8</argLine>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
                 </configuration>
             </plugin>
         </plugins>
