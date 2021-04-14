@@ -43,7 +43,7 @@
         <lwjgl.version>3.2.3</lwjgl.version>
         <annotations.version>20.1.0</annotations.version>
         <!---->
-        <x8l.version>2.3.4</x8l.version>
+        <x8l.version>2.3.5</x8l.version>
         <!---->
         <!--maven plugins versions-->
         <maven-site-plugin.version>3.9.1</maven-site-plugin.version>
