@@ -45,6 +45,7 @@
         <x8l.version>2.3.6</x8l.version>
         <cyan_zip.version>0.1.1</cyan_zip.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
+        <commons-io.version>2.8.0</commons-io.version>
         <jackson.version>2.12.3</jackson.version>
         <!---->
         <!--maven plugins versions-->
@@ -208,6 +209,12 @@
             <groupId>com.xenoamess.cyan_potion</groupId>
             <artifactId>cyan_zip</artifactId>
             <version>${cyan_zip.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

@@ -6,6 +6,7 @@ import com.xenoamess.to4096words.dto.SingleTimeDto;
 import com.xenoamess.x8l.ContentNode;
 import com.xenoamess.x8l.X8lTree;
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,7 +20,7 @@ public class From4096ConverterImpl implements From4096Converter {
     ConcurrentHashMap<String, Integer> sMap = new ConcurrentHashMap<>();
 
     @Override
-    public void convert(@NotNull String hash) {
+    public void convert(@NotNull String outputFolder, @NotNull String hash) {
         Integer sum = sMap.get(hash);
         if (sum == null) {
             throw new RuntimeException("not ready.");
@@ -38,7 +39,11 @@ public class From4096ConverterImpl implements From4096Converter {
         String encodedContent = stringBuilder.toString();
         byte[] bytes = Base64.getDecoder().decode(encodedContent);
         try (InputStream inputStream = new ByteArrayInputStream(bytes)) {
-            FileOutputStream outputStream = new FileOutputStream(hash);
+            File outputFolderFile = new File(outputFolder);
+            if (!outputFolderFile.exists()) {
+                outputFolderFile.mkdirs();
+            }
+            FileOutputStream outputStream = new FileOutputStream(new File(outputFolderFile, hash));
             ForcastingRangeEncodingDecoder decoder = new ForcastingRangeEncodingDecoder(inputStream);
             decoder.decodeAll(outputStream);
             outputStream.close();
@@ -46,6 +51,11 @@ public class From4096ConverterImpl implements From4096Converter {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public void convert(@NotNull String hash) {
+        this.convert("./", hash);
     }
 
     @Override
