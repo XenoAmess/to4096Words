@@ -14,10 +14,13 @@ import java.util.Base64;
 import java.util.concurrent.ConcurrentHashMap;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * @author XenoAmess
+ */
 public class From4096ConverterImpl implements From4096Converter {
 
-    ConcurrentHashMap<String, ConcurrentHashMap<Integer, String>> pool = new ConcurrentHashMap<>();
-    ConcurrentHashMap<String, Integer> sMap = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, ConcurrentHashMap<Integer, String>> pool = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, Integer> sMap = new ConcurrentHashMap<>();
 
     @Override
     public void convert(@NotNull String outputFolder, @NotNull String hash) {
@@ -41,12 +44,13 @@ public class From4096ConverterImpl implements From4096Converter {
         try (InputStream inputStream = new ByteArrayInputStream(bytes)) {
             File outputFolderFile = new File(outputFolder);
             if (!outputFolderFile.exists()) {
+                //noinspection ResultOfMethodCallIgnored
                 outputFolderFile.mkdirs();
             }
-            FileOutputStream outputStream = new FileOutputStream(new File(outputFolderFile, hash));
-            ForcastingRangeEncodingDecoder decoder = new ForcastingRangeEncodingDecoder(inputStream);
-            decoder.decodeAll(outputStream);
-            outputStream.close();
+            try(FileOutputStream outputStream = new FileOutputStream(new File(outputFolderFile, hash))) {
+                ForcastingRangeEncodingDecoder decoder = new ForcastingRangeEncodingDecoder(inputStream);
+                decoder.decodeAll(outputStream);
+            }
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException(e);

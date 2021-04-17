@@ -10,6 +10,9 @@ import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * @author XenoAmess
+ */
 public class FromAndTo4096ConverterImplTest {
 
     private static final String FILE_NAME = "ACM.png";
@@ -24,7 +27,7 @@ public class FromAndTo4096ConverterImplTest {
     }
 
     @Test
-    public void test2() throws IOException {
+    public void test2() {
         From4096ConverterImpl from4096Converter = new From4096ConverterImpl();
         String nowHash = FILE_NAME;
         for (int i = 0; i < 1000; i++) {
@@ -47,7 +50,9 @@ public class FromAndTo4096ConverterImplTest {
         try (
                 InputStream outputInputStream =
                         new ByteArrayInputStream(FileUtils.readFileToByteArray(new File(FILE_NAME)));
-                InputStream originalInputStream = this.getClass().getClassLoader().getResourceAsStream(FILE_NAME)) {
+                InputStream originalInputStream =
+                        this.getClass().getClassLoader().getResourceAsStream(FILE_NAME)
+        ) {
             assertTrue(IOUtils.contentEquals(originalInputStream, outputInputStream));
         }
     }

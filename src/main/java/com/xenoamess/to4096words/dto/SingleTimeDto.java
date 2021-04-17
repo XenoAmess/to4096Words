@@ -2,6 +2,9 @@ package com.xenoamess.to4096words.dto;
 
 import com.xenoamess.x8l.databind.X8lDataBeanFieldMark;
 
+/**
+ * @author XenoAmess
+ */
 public class SingleTimeDto {
     public SingleTimeDto() {
 
