@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.util.Base64;
 import java.util.concurrent.ConcurrentHashMap;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author XenoAmess
@@ -23,7 +24,7 @@ public class From4096ConverterImpl implements From4096Converter {
     private final ConcurrentHashMap<String, Integer> sMap = new ConcurrentHashMap<>();
 
     @Override
-    public void convert(@NotNull String outputFolder, @NotNull String hash) {
+    public void convert(@Nullable File outputFolder, @NotNull String hash) {
         Integer sum = sMap.get(hash);
         if (sum == null) {
             throw new RuntimeException("not ready.");
@@ -42,12 +43,11 @@ public class From4096ConverterImpl implements From4096Converter {
         String encodedContent = stringBuilder.toString();
         byte[] bytes = Base64.getDecoder().decode(encodedContent);
         try (InputStream inputStream = new ByteArrayInputStream(bytes)) {
-            File outputFolderFile = new File(outputFolder);
-            if (!outputFolderFile.exists()) {
+            if (outputFolder != null && !outputFolder.exists()) {
                 //noinspection ResultOfMethodCallIgnored
-                outputFolderFile.mkdirs();
+                outputFolder.mkdirs();
             }
-            try(FileOutputStream outputStream = new FileOutputStream(new File(outputFolderFile, hash))) {
+            try (FileOutputStream outputStream = new FileOutputStream(new File(outputFolder, hash))) {
                 ForcastingRangeEncodingDecoder decoder = new ForcastingRangeEncodingDecoder(inputStream);
                 decoder.decodeAll(outputStream);
             }
@@ -59,7 +59,16 @@ public class From4096ConverterImpl implements From4096Converter {
 
     @Override
     public void convert(@NotNull String hash) {
-        this.convert("./", hash);
+        this.convert((File) null, hash);
+    }
+
+    @Override
+    public void convert(@Nullable String outputFolder, @NotNull String hash) {
+        if (outputFolder == null) {
+            this.convert((File) null, hash);
+        } else {
+            this.convert(new File(outputFolder), hash);
+        }
     }
 
     @Override

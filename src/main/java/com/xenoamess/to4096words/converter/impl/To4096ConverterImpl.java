@@ -36,13 +36,13 @@ public class To4096ConverterImpl implements To4096Converter {
         ForcastingRangeEncodingEncoder encoder;
         try(ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
             encoder = new ForcastingRangeEncodingEncoder(inputFile.length(), outputStream);
+            try(
+                    InputStream inputStream = FileUtils.openInputStream(inputFile)
+            ){
+                encoder.encodeAll(inputStream);
+            }
             outputStream.close();
             rawData = outputStream.toByteArray();
-        }
-        try(
-            InputStream inputStream = FileUtils.openInputStream(inputFile)
-        ){
-            encoder.encodeAll(inputStream);
         }
 
         List<SingleTimeDto> singleTimeDtos = new ArrayList<>();

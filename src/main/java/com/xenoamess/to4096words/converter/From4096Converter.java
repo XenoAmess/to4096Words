@@ -1,6 +1,8 @@
 package com.xenoamess.to4096words.converter;
 
+import java.io.File;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author XenoAmess
@@ -13,7 +15,15 @@ public interface From4096Converter {
      * @param outputFolder output folder
      * @param hash file hash
      */
-    void convert(@NotNull String outputFolder, @NotNull String hash);
+    void convert(@Nullable File outputFolder, @NotNull String hash);
+
+    /**
+     * convert back to original file, using 4096 Strings already in pool.
+     *
+     * @param outputFolder output folder
+     * @param hash file hash
+     */
+    void convert(@Nullable String outputFolder, @NotNull String hash);
 
     /**
      * convert back to original file, using 4096 Strings already in pool.

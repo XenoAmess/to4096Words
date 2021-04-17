@@ -24,6 +24,7 @@ public class FromAndTo4096ConverterImplTest {
                 new File("src/test/resources/" + FILE_NAME),
                 new File("target")
         );
+
     }
 
     @Test
