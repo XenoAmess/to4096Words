@@ -1,6 +1,5 @@
 package com.xenoamess.to4096words.converter.impl;
 
-import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 import com.xenoamess.cyan_potion.cyan_zip.forecastingRangeEncoding.ForcastingRangeEncodingDecoder;
 import com.xenoamess.to4096words.converter.From4096Converter;
 import com.xenoamess.to4096words.dto.SingleTimeDto;
@@ -10,6 +9,7 @@ import java.io.ByteArrayInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Base64;
 import java.util.concurrent.ConcurrentHashMap;
 import org.jetbrains.annotations.NotNull;
 
@@ -36,7 +36,7 @@ public class From4096ConverterImpl implements From4096Converter {
             stringBuilder.append(subPool.get(i));
         }
         String encodedContent = stringBuilder.toString();
-        byte[] bytes = Base64.decode(encodedContent);
+        byte[] bytes = Base64.getDecoder().decode(encodedContent);
         try (InputStream inputStream = new ByteArrayInputStream(bytes)) {
             FileOutputStream outputStream = new FileOutputStream(hash);
             ForcastingRangeEncodingDecoder decoder = new ForcastingRangeEncodingDecoder(inputStream);
