@@ -24,7 +24,7 @@ public class FromAndTo4096ConverterImplTest {
                 new File("src/test/resources/" + FILE_NAME),
                 new File("target")
         );
-
+        assertTrue(new File("target/" + FILE_NAME + "_0.x8l").exists());
     }
 
     @Test
@@ -44,6 +44,7 @@ public class FromAndTo4096ConverterImplTest {
             }
         }
         from4096Converter.convert(nowHash);
+        assertTrue(new File(FILE_NAME).exists());
     }
 
     @Test
