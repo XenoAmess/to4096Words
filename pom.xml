@@ -45,7 +45,7 @@
         <x8l.version>2.3.6</x8l.version>
         <cyan_zip.version>0.1.1</cyan_zip.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
-        <jackson.version>2.12.3</jackson.version>
+        <jackson.version>2.12.4</jackson.version>
         <!---->
         <!--maven plugins versions-->
         <maven-site-plugin.version>3.9.1</maven-site-plugin.version>
