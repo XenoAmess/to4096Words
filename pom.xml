@@ -41,7 +41,7 @@
         <base.java.version>1.8</base.java.version>
         <!---->
         <annotations.version>23.0.0</annotations.version>
-        <junit-jupiter.version>5.8.1</junit-jupiter.version>
+        <junit-jupiter.version>5.8.2</junit-jupiter.version>
         <x8l.version>2.3.6</x8l.version>
         <cyan_zip.version>0.1.1</cyan_zip.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
