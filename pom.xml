@@ -58,7 +58,7 @@
         <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
         <maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
         <download-maven-plugin.version>1.6.1</download-maven-plugin.version>
-        <versions-maven-plugin.version>2.16.0</versions-maven-plugin.version>
+        <versions-maven-plugin.version>2.16.1</versions-maven-plugin.version>
         <!--enforce-->
         <enforce.activate>true</enforce.activate>
         <maven-enforcer-plugin.version>3.4.1</maven-enforcer-plugin.version>
