@@ -44,7 +44,7 @@
         <junit-jupiter.version>5.11.4</junit-jupiter.version>
         <x8l.version>2.3.9</x8l.version>
         <cyan_zip.version>0.1.1</cyan_zip.version>
-        <commons-lang3.version>3.14.0</commons-lang3.version>
+        <commons-lang3.version>3.17.0</commons-lang3.version>
         <jackson.version>2.18.2</jackson.version>
         <!---->
         <!--maven plugins versions-->
